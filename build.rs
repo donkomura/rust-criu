@@ -4,6 +4,7 @@ fn main() {
         protobuf_codegen::Codegen::new()
             .includes(["proto"])
             .input("proto/rpc.proto")
+            .input("proto/stats.proto")
             .out_dir("src/rust_criu_protobuf")
             .run_from_script();
         #[cfg(not(feature = "protobuf-codegen"))]
@@ -28,6 +29,7 @@ fn main() {
     println!("cargo:rerun-if-changed=test/loop.c");
     println!("cargo:rerun-if-changed=test/loop_pts.c");
     println!("cargo:rerun-if-changed=proto/rpc.proto");
+    println!("cargo:rerun-if-changed=proto/stats.proto");
     println!("cargo:rerun-if-env-changed=GENERATE_PROTOBUF");
     println!("cargo:rerun-if-env-changed=GENERATE_TEST_PROCESS");
 }

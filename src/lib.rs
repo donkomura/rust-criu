@@ -1,4 +1,5 @@
 pub mod rust_criu_protobuf;
+pub mod stats;
 
 use protobuf::{Message, MessageField};
 use rust_criu_protobuf::rpc;
@@ -68,6 +69,9 @@ pub enum CriuError {
 
     #[error("failed to parse CRIU version")]
     VersionParse,
+
+    #[error("invalid CRIU stats image: {0}")]
+    InvalidStatsImage(String),
 }
 
 pub struct Criu {
